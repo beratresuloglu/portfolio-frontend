@@ -697,3 +697,30 @@ input:focus, textarea:focus {
 .toggle .line3 {
     transform: rotate(45deg) translate(-5px, -6px);
 }
+
+/* --- MOBİL CHATBOT AYARLARI --- */
+@media screen and (max-width: 768px) {
+    #chat-window {
+        /* Genişlik Ayarı */
+        width: 90%;        /* Ekranın %90'ını kaplasın */
+        right: 5%;         /* Ortalamak için sağdan %5 boşluk */
+        
+        /* Yükseklik Ayarı */
+        height: 50vh;      /* Ekranın yarısı kadar olsun (Klavye açılınca kapanmasın diye kısa tuttuk) */
+        
+        /* Konum Ayarı */
+        bottom: 90px;      /* Yuvarlak açma butonunun hemen üzerinde dursun */
+        border-radius: 15px;
+    }
+
+    /* Mobilde yazı boyutlarını biraz küçültelim */
+    .ai-msg, .user-msg {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    /* Header (Başlık) kısmını biraz sıkıştıralım */
+    #chat-header {
+        padding: 10px 15px;
+    }
+}
