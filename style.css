@@ -23,6 +23,9 @@ html {
 }
 
 body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
     background-color: var(--bg-color);
     color: var(--text-primary);
     line-height: 1.6;
@@ -605,4 +608,92 @@ input:focus, textarea:focus {
         transform: scale(3);
         opacity: 0;
     }
+}
+
+/* --- RESPONSIVE NAVBAR AYARLARI (Dosyanın En Altına Ekle) --- */
+
+/* 1. Navigasyon Container Düzeni */
+.nav-container {
+    display: flex;
+    justify-content: space-around; /* Mobilde ikon ve menüyü yaymak için */
+    align-items: center;
+    width: 100%;
+}
+
+/* 2. Hamburger Menü İkonu (Masaüstünde Gizli) */
+.burger {
+    display: none;
+    cursor: pointer;
+    z-index: 1001; /* Menünün üzerinde görünmesi için */
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* 3. MOBİL GÖRÜNÜM (Tablet ve Telefonlar) */
+@media screen and (max-width: 768px) {
+    /* Linkleri tutan kapsayıcıyı mobilde sağa gizle */
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: 92vh; /* Nav yüksekliği (8vh) hariç ekran boyu */
+        top: 8vh;     /* Navbarın hemen altından başlasın */
+        background-color: #0b0e14; /* Arka plan rengi */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 60%; /* Ekranın %60'ını kaplasın */
+        transform: translateX(100%); /* Başlangıçta ekran dışına it */
+        transition: transform 0.5s ease-in;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        border-left: 1px solid rgba(255,255,255,0.1);
+        z-index: 999;
+    }
+
+    /* Mobilde linkler arası boşluk */
+    .nav-links li {
+        margin: 1.5rem 0;
+        opacity: 0; /* Animasyonla gelmesi için başta görünmez */
+    }
+
+    /* Hamburger ikonunu görünür yap */
+    .burger {
+        display: block;
+    }
+}
+
+/* 4. JavaScript ile Eklenecek Sınıflar */
+
+/* Menü açıldığında devreye giren sınıf */
+.nav-active {
+    transform: translateX(0%);
+}
+
+/* Linklerin sırayla gelme animasyonu */
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+/* Hamburger ikonunun X şekline dönüşmesi */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
 }

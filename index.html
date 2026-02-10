@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="assets/foto2.png">
         <title>Berat Resuloğlu | Portfolyö</title>
         <link rel="stylesheet" href="style.css">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
     <body>
     <nav>
         <div class="nav-container">
-            <ul>
+            <ul class="nav-links">
                 <li><a href="#about" data-key="nav-about">Hakkımda</a></li>
                 <li><a href="#education" data-key="nav-education">Eğitim</a></li>
                 <li><a href="#skills" data-key="nav-skills">Beceriler</a></li>
@@ -20,6 +21,12 @@
                 <li><a href="#contact" data-key="nav-contact">İletişim</a></li>
                 <li><button id="lang-btn" class="lang-switch">EN</button></li>
             </ul>
+            
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
         </div>
     </nav>
 
@@ -239,6 +246,34 @@
     </html>
 
     <script>
+
+        // --- NAVBAR --- //
+        const navSlide = () => {
+            const burger = document.querySelector('.burger');
+            const nav = document.querySelector('.nav-links');
+            const navLinks = document.querySelectorAll('.nav-links li');
+
+            if(burger) {
+                burger.addEventListener('click', () => {
+                    // Menüyü Aç/Kapa
+                    nav.classList.toggle('nav-active');
+
+                    // Linklerin animasyonu
+                    navLinks.forEach((link, index) => {
+                        if (link.style.animation) {
+                            link.style.animation = '';
+                        } else {
+                            link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                        }
+                    });
+
+                    // Hamburger animasyonu
+                    burger.classList.toggle('toggle');
+                });
+            }
+        }
+
+
         // --- ÇOKLU DİL DESTEĞİ (TRANSLATIONS) ---
         const translations = {
             tr: {
@@ -404,6 +439,9 @@
 
         // Sayfa yüklendiğinde event listener'ları ata
         document.addEventListener('DOMContentLoaded', function() {
+
+            navSlide();
+
             const sendBtn = document.getElementById('send-btn');
             const userInput = document.getElementById('user-input');
 
