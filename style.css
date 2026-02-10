@@ -1,0 +1,608 @@
+/* --- Genel Ayarlar --- */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+:root {
+    --bg-color: #0b0e14;        /* Görseldeki derin uzay siyahı */
+    --card-bg: #151921;         /* Kartlar için antrasit tonu */
+    --text-primary: #e6edf3;    /* Net okunabilir beyaz */
+    --text-secondary: #94a3b8;  /* Yardımcı metin gri tonu */
+    --accent: #00d4ff;          /* Görseldeki parlak neon mavi */
+    --accent-glow: rgba(0, 212, 255, 0.3);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    /* Hafif bir grid dokusu ekleyerek mühendislik havası veriyoruz */
+    background-image: 
+        radial-gradient(circle at 2px 2px, rgba(255,255,255,0.05) 1px, transparent 0);
+    background-size: 40px 40px;
+}
+
+.lang-switch {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.75rem;
+    transition: var(--transition);
+}
+
+.lang-switch:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.logo {
+    /* Font Seçimi: Fütüristik için 'Orbitron', modern için 'Montserrat' kullanabilirsin */
+    font-family: 'Montserrat', sans-serif; 
+    
+    /* Punto (Boyut) Ayarı */
+    font-size: 2.2rem; 
+    
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+}
+
+.logo span {
+    color: var(--text-primary);
+    margin-left: -4px; /* Noktayı logoya biraz daha yaklaştırır */
+}
+
+.logo:hover {
+    transform: scale(1.08); /* Büyüme etkisini biraz daha artırdık */
+    text-shadow: 0 0 15px var(--accent-glow);
+}
+/* --- Navigasyon --- */
+nav {
+    padding: 1rem 10%;
+    display: flex;
+    justify-content: center;
+    background: rgba(3, 7, 18, 0.85); /* Glassmorphism etkisi */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: fixed; /* 'sticky' yerine 'fixed' kullanarak her zaman üstte kalmasını garantiye alıyoruz */
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+}
+
+nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    transition: var(--transition);
+    position: relative;
+}
+
+/* Aktif link alt çizgisi efekti */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: var(--transition);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: center; /* Logoyu kaldırdığımız için öğeleri merkeze aldık */
+    width: 100%;
+}
+
+/* --- Hero Section --- */
+header {
+    margin-top: 80px; /* Navbar yüksekliği kadar boşluk */
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    /* Görseldeki gibi beyazdan maviye geçiş */
+    background: linear-gradient(to right, #ffffff, var(--accent));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Chat Konteyner ve Pencere --- */
+#ai-chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+}
+
+#chat-window {
+    display: none; /* Varsayılan olarak gizli */
+    flex-direction: column;
+    /* BOYUT AYARLARI BURADA: Daha geniş ve uzun yaptık */
+    width: 380px;  
+    height: 550px; 
+    background: #1a1a1a; /* Koyu modern arka plan */
+    border-radius: 20px; /* Köşeleri daha çok yuvarladık */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Derin gölge */
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Pencere açılma animasyonu */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Header (Başlık) Kısmı --- */
+#chat-header {
+    background: linear-gradient(135deg, #007bff, #00d4ff); /* Modern gradyan */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+/* --- Modern Çarpı (Kapat) Butonu --- */
+.close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: rgba(255, 0, 0, 0.7); /* Üzerine gelince kırmızı */
+    transform: rotate(90deg); /* Dönme efekti */
+}
+
+/* --- Proje Kartı Rozetleri (Badges) --- */
+
+/* Etiketleri tutan kapsayıcı */
+.card-badges {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column; /* Alt alta dizilmesi için (Yan yana istersen 'row' yap) */
+    align-items: flex-end;  /* Sağa yasla */
+    gap: 8px;
+    z-index: 2;
+}
+
+/* Genel Rozet Stili */
+.badge {
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+}
+
+.badge i {
+    font-size: 0.8rem;
+}
+
+/* --- Durum Renkleri --- */
+
+/* Devam Ediyor (Turuncu/Sarı) */
+.status-continuing {
+    border: 1px solid #ff9f43;
+    color: #ff9f43;
+    background: rgba(255, 159, 67, 0.1);
+    box-shadow: 0 0 10px rgba(255, 159, 67, 0.1);
+}
+
+/* Tamamlandı (Yeşil) */
+.status-completed {
+    border: 1px solid #2ecc71;
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.1);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.1);
+}
+
+.ai-footer {
+    text-align: center;
+    font-size: 0.65rem; /* Çok küçük */
+    color: rgba(255, 255, 255, 0.3); /* Çok silik */
+    padding-bottom: 10px;
+    margin-top: -10px; /* Input'a yaklaştır */
+}
+
+.ai-footer a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+}
+
+/* --- Proje Türü Renkleri --- */
+
+/* Bireysel (Mor) */
+.type-personal {
+    border: 1px solid #a55eea;
+    color: #a55eea;
+    background: rgba(165, 94, 234, 0.1);
+}
+
+/* Ekip (Mavi - Temana Uygun) */
+.type-team {
+    border: 1px solid #00d4ff;
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+/* Hover Efekti: Kartın üzerine gelince etiketler parlasın */
+.project-card:hover .badge {
+    filter: brightness(1.2);
+    transform: translateX(-2px);
+}
+
+
+/* --- Chat Mesaj Alanı --- */
+#chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #121212;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Mesaj Baloncukları */
+.ai-msg, .user-msg {
+    max-width: 80%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.ai-msg {
+    background: #2c2c2c;
+    color: #e0e0e0;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.user-msg {
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+/* --- Input ve Gönder Butonu Alanı --- */
+#chat-input-area {
+    padding: 15px;
+    background: #1a1a1a;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #252525;
+    color: white;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#user-input:focus {
+    border-color: #007bff;
+}
+
+/* --- Modern Gönder Butonu --- */
+#send-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+#send-btn:hover {
+    transform: scale(1.1); /* Büyüme efekti */
+    box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+}
+
+#send-btn:active {
+    transform: scale(0.95);
+}
+
+/* --- Ana Chat Açma Butonu (Floating Button) --- */
+#chat-toggle-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #007bff;
+    color: white;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#chat-toggle-btn:hover {
+    transform: scale(1.1) rotate(10deg);
+}
+/* --- Profil Fotoğrafı (Hover Efektiyle) --- */
+.profile-pic {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 2rem;
+    border: 3px solid var(--accent);
+    padding: 5px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+    transition: var(--transition);
+}
+
+.profile-pic:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 0 40px var(--accent-glow);
+    border-color: #fff;
+}
+
+/* --- Projeler Izgarası --- */
+#projects {
+    padding: 5rem 10%;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 3.5rem;
+    text-align: center;
+    font-weight: 800;
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+}
+
+.project-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* Kartın içindeki "Aktif" mavi vurgu efekti */
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: var(--accent);
+    transition: var(--transition);
+}
+
+.project-card:hover::before {
+    height: 100%;
+}
+
+.project-card h3 {
+    margin-bottom: 1.2rem;
+    color: var(--accent);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* --- Teknoloji Yığını (Görseldeki Stil) --- */
+.tech-stack {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.tech-tag {
+    background: rgba(0, 212, 255, 0.05);
+    color: var(--accent);
+    padding: 0.4rem 1rem;
+    border-radius: 4px; /* Görseldeki gibi daha köşeli-modern */
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.tech-tag:hover {
+    background: var(--accent);
+    color: var(--bg-color);
+}
+
+/* --- İletişim Butonu --- */
+.contact-btn {
+    background: var(--accent);
+    color: var(--bg-color);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.contact-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+/* Input ve Form Elemanları */
+input, textarea {
+    background: #0b0e14 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    border-radius: 6px;
+    padding: 1rem;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    header h1 { font-size: 2.2rem; }
+    nav ul { gap: 1rem; }
+}
+
+/* --- Canlı Durum Göstergesi --- */
+.live-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(56, 189, 248, 0.05);
+    padding: 6px 16px;
+    border-radius: 100px;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.project-name {
+    color: var(--accent);
+    font-weight: 700;
+}
+
+/* Yanıp Sönen Nokta */
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    position: relative;
+}
+
+.pulse-dot::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+/* Büyüyüp Küçülen Işıma Animasyonu */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
