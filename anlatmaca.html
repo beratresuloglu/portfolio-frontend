@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Anlatmaca | Kelime Oyunu</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="assets/foto2.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Montserrat:wght@800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+
+    <style>
+      /* --- ENTEGRASYON İÇİN GEREKLİ DEĞİŞKENLER (Ana CSS ile eşleşti) --- */
+      :root {
+        --bg-color: #0b0e14;
+        --card-bg: #151921;
+        --text-primary: #e6edf3;
+        --text-secondary: #94a3b8;
+        --accent: #00d4ff;
+        --accent-glow: rgba(0, 212, 255, 0.3);
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      /* --- GENEL SAYFA AYARLARI --- */
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-primary);
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        line-height: 1.6;
+        /* Ana sayfadaki grid dokusu */
+        background-image: radial-gradient(
+          circle at 2px 2px,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 40px 40px;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* --- HERO BÖLÜMÜ --- */
+      .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8rem 10%;
+        min-height: 80vh;
+        /* Mor gradyan yerine Neon Mavi hafif ışık */
+        background: radial-gradient(
+          circle at top right,
+          rgba(0, 212, 255, 0.08),
+          transparent 50%
+        );
+      }
+
+      .hero-content {
+        flex: 1;
+        max-width: 600px;
+        z-index: 10;
+      }
+
+      .hero-title {
+        /* Orbitron yerine Montserrat */
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        /* Beyazdan maviye geçiş */
+        background: linear-gradient(to right, #ffffff, var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .hero-content p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      /* --- GÖRSEL VE MOCKUP ALANI --- */
+      .hero-img {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        padding-left: 150px;
+      }
+
+      .mockup-container {
+        position: relative;
+        width: 300px;
+        height: 600px;
+        transition: var(--transition);
+        cursor: pointer;
+      }
+
+      .phone-mockup {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        border-radius: 40px;
+        /* Telefon çerçevesi koyu gri */
+        border: 8px solid #2d2d2d;
+        overflow: hidden;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .phone-mockup img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* --- Mockup Katmanları --- */
+      .mockup-3 {
+        z-index: 1;
+        transform: scale(0.9) rotate(-5deg);
+        opacity: 0.6;
+        border-color: #222; /* Arkadakiler daha sönük */
+      }
+
+      .mockup-2 {
+        z-index: 2;
+        transform: scale(0.95) rotate(-2deg);
+        opacity: 0.8;
+        border-color: #2a2a2a;
+      }
+
+      .mockup-1 {
+        z-index: 3;
+        transform: scale(1) rotate(0deg);
+        /* Ana telefona hafif mavi ışıma ekledik */
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.15);
+        border-color: #333;
+      }
+
+      /* Hover Animasyonları */
+      .mockup-container:hover .mockup-1 {
+        transform: translateX(0) scale(1);
+        box-shadow: 0 0 50px rgba(0, 212, 255, 0.3); /* Hoverda daha parlak */
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .mockup-container:hover .mockup-2 {
+        transform: translateX(140px) scale(0.95) rotate(5deg);
+        opacity: 1;
+      }
+
+      .mockup-container:hover .mockup-3 {
+        transform: translateX(260px) scale(0.9) rotate(10deg);
+        opacity: 1;
+      }
+
+      /* --- BUTONLAR (Ana Sayfa Stili) --- */
+      .download-btns {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .btn-store {
+        /* Ana sayfadaki contact-btn ile aynı stil */
+        background: var(--accent);
+        color: var(--bg-color);
+        padding: 0.9rem 1.8rem;
+        border-radius: 6px;
+        border: none;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        transition: var(--transition);
+        font-size: 0.9rem;
+      }
+
+      .btn-store:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px var(--accent-glow);
+        filter: brightness(1.1);
+        color: var(--bg-color); /* Hoverda yazı rengi bozulmasın */
+      }
+
+      .btn-store i {
+        font-size: 1.2rem;
+      }
+
+      /* İkinci buton (Google Play gibi) için hafif varyasyon istersen */
+      .btn-store.outline {
+        background: transparent;
+        border: 2px solid var(--accent);
+        color: var(--accent);
+      }
+      .btn-store.outline:hover {
+        background: var(--accent);
+        color: var(--bg-color);
+      }
+
+      /* --- ÖZELLİKLER GRID (Project Card Stili) --- */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        padding: 4rem 10%;
+      }
+
+      .feature-box {
+        background: var(--card-bg);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08); /* border-subtle */
+        text-align: center;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Kartın içindeki "Aktif" mavi çizgi efekti (Project Card'dan alındı) */
+      .feature-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--accent);
+        transition: var(--transition);
+      }
+
+      .feature-box:hover::before {
+        height: 100%;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-12px);
+        border-color: rgba(56, 189, 248, 0.4);
+        box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      }
+
+      .feature-icon {
+        font-size: 2.5rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        /* İkonlara hafif neon parlama */
+        filter: drop-shadow(0 0 8px var(--accent-glow));
+      }
+
+      .feature-box h3 {
+        color: var(--text-primary);
+        font-family: "Montserrat", sans-serif;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .feature-box p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      /* --- GERİ DÖN BUTONU --- */
+      .back-btn {
+        position: absolute;
+        top: 100px; /* Navbar payı */
+        left: 10%;
+        color: var(--text-secondary);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: "Inter", sans-serif;
+        font-weight: 600;
+        transition: var(--transition);
+        z-index: 20;
+      }
+
+      .back-btn:hover {
+        color: var(--accent);
+        transform: translateX(-5px);
+        text-shadow: 0 0 10px var(--accent-glow);
+      }
+
+      /* --- RESPONSIVE AYARLAR --- */
+      @media (max-width: 1024px) {
+        .hero-img {
+          justify-content: center;
+          padding-left: 0;
+          margin-top: 4rem;
+          overflow: visible; /* Mockup taşması için */
+        }
+
+        .mockup-container {
+          transform: scale(0.85);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          flex-direction: column;
+          text-align: center;
+          padding-top: 6rem;
+        }
+
+        .hero-content {
+          margin-bottom: 2rem;
+        }
+
+        .download-btns {
+          justify-content: center;
+          flex-direction: column;
+          width: 100%;
+        }
+
+        .btn-store {
+          justify-content: center;
+          width: 100%;
+        }
+
+        .back-btn {
+          top: 90px;
+          left: 20px;
+        }
+
+        /* Mobilde hover efektini basitleştirme */
+        .mockup-container:hover .mockup-2 {
+          transform: translateX(60px) scale(0.9) rotate(5deg);
+        }
+        .mockup-container:hover .mockup-3 {
+          transform: translateX(120px) scale(0.85) rotate(10deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="index.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Portfolyoya Dön
+    </a>
+
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Anlatmaca</h1>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ccc">
+          Kelime Oyunu
+        </h2>
+        <p
+          style="
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #aaa;
+            margin-bottom: 2rem;
+          "
+        >
+          Yasaklı kelimeleri kullanmadan takım arkadaşına hedef kelimeyi anlat!
+          Flutter ile geliştirilen, hızlı, modern ve eğlence dolu bir parti
+          oyunu.
+        </p>
+
+        <div
+          class="tech-stack"
+          style="margin-bottom: 2rem; justify-content: flex-start"
+        >
+          <span class="tech-tag">Flutter</span>
+          <span class="tech-tag">Dart</span>
+          <span class="tech-tag">Mobile Game</span>
+        </div>
+
+        <div class="download-btns">
+          <a href="#" class="btn-store">
+            <i class="fab fa-google-play fa-2x"></i>
+            <div>
+              <small style="display: block; font-size: 0.7rem">GET IT ON</small>
+              <span style="font-weight: bold">Google Play</span>
+            </div>
+          </a>
+          <a
+            href="https://github.com/beratresuloglu/Anlatmaca-Kelime-Oyunu"
+            class="btn-store"
+          >
+            <i class="fab fa-github fa-2x"></i>
+            <div>
+              <small style="display: block; font-size: 0.7rem">VIEW CODE</small>
+              <span style="font-weight: bold">GitHub</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-img">
+        <div class="mockup-container">
+          <div class="phone-mockup mockup-3">
+            <img src="assets/oyun-ekrani-2.jpeg" alt="Anlatmaca Yan Ekran" />
+          </div>
+
+          <div class="phone-mockup mockup-2">
+            <img src="assets/oyun-ekrani-1.jpeg" alt="Anlatmaca Menü Ekranı" />
+          </div>
+
+          <div class="phone-mockup mockup-1">
+            <img
+              src="assets/anlatmaca-anasayfa.jpeg"
+              alt="Anlatmaca Ana Oyun Ekranı"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" style="background: rgba(255, 255, 255, 0.02)">
+      <h2
+        style="
+          text-align: center;
+          font-family: &quot;Orbitron&quot;, sans-serif;
+          padding-top: 4rem;
+        "
+      >
+        Oyun Özellikleri
+      </h2>
+      <div class="features-grid">
+        <div class="feature-box">
+          <i class="fas fa-bolt feature-icon"></i>
+          <h3>Hızlı Oyun Modu</h3>
+          <p style="color: #aaa">
+            Bekleme yok! Uygulamayı aç, takımları kur ve saniyeler içinde
+            oynamaya başla.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <i class="fas fa-database feature-icon"></i>
+          <h3>Geniş Kelime Havuzu</h3>
+          <p style="color: #aaa">
+            JSON tabanlı veri yapısı sayesinde yüzlerce kelime ve dinamik içerik
+            yönetimi.
+          </p>
+        </div>
+
+        <div class="feature-box">
+          <i class="fas fa-users feature-icon"></i>
+          <h3>Takım Yönetimi</h3>
+          <p style="color: #aaa">
+            İstediğin kadar takım oluştur, puanları otomatik takip et ve
+            kazananı belirle.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section style="padding: 4rem 10%; text-align: center">
+      <h2
+        style="
+          font-family: &quot;Orbitron&quot;, sans-serif;
+          margin-bottom: 2rem;
+        "
+      >
+        Teknik Mimari
+      </h2>
+      <p
+        style="max-width: 800px; margin: 0 auto; color: #aaa; line-height: 1.8"
+      >
+        Bu proje <strong>Flutter</strong> framework'ü kullanılarak
+        geliştirilmiştir. State management için
+        <strong>Provider/Riverpod</strong> mimarisi kullanılmış olup, veriler
+        local JSON dosyalarından asenkron olarak parse edilmektedir. Oyun içi
+        zamanlayıcılar ve skor takibi için optimize edilmiş algoritmalar içerir.
+      </p>
+    </section>
+
+    <footer
+      style="
+        text-align: center;
+        padding: 3rem 2rem;
+        background: rgba(0, 0, 0, 0.2);
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        color: #666;
+        font-size: 0.9rem;
+      "
+    >
+      <div
+        style="
+          margin-bottom: 1.5rem;
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+        "
+      >
+        <a
+          href="privacy.html"
+          style="
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.color = '#00d4ff'"
+          onmouseout="this.style.color = '#94a3b8'"
+        >
+          Gizlilik Politikası
+        </a>
+
+        <span style="color: #444">|</span>
+
+        <a
+          href="app-ads.txt"
+          target="_blank"
+          style="
+            color: #94a3b8;
+            text-decoration: none;
+            transition: all 0.3s ease;
+          "
+          onmouseover="this.style.color = '#00d4ff'"
+          onmouseout="this.style.color = '#94a3b8'"
+        >
+          Reklam Doğrulama
+        </a>
+      </div>
+
+      <div style="opacity: 0.8">
+        &copy; 2026 Berat Resuloğlu.
+        <br class="mobile-break" style="display: none" />
+        Tüm Hakları Saklıdır.
+      </div>
+    </footer>
+  </body>
+</html>
