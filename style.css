@@ -736,3 +736,210 @@ input:focus, textarea:focus {
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+.project-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch; /* Kartların bulunduğu alanı tam olarak doldurmasını sağlar */
+    gap: 2rem;
+    width: 100%;
+}
+
+.project-grid .project-card, .project-grid .project-link-wrapper {
+    width: 100%;
+    max-width: 100%; /* Önceki 800px sınırını kaldırıp tam genişliğe yayıyoruz */
+    box-sizing: border-box; /* Padding taşmalarını engeller */
+}
+
+/* Yıldızların karta göre konumlanması için kartı relative yapıyoruz */
+.project-card, .project-link-wrapper .project-card {
+    position: relative;
+}
+
+/* Yıldız Konteyneri Tasarımı */
+.project-difficulty {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    display: flex;
+    gap: 0.2rem;
+    /* 0.2 olan değeri 0.08'e düşürdük. Artık çok daha solgun ve karanlık. */
+    color: rgba(255, 255, 255, 0.08); 
+    font-size: 1rem; /* Yıldızları bir tık daha belirginleştirdik */
+    transition: transform 0.3s ease;
+}
+
+/* DOLU Yıldızlar (Çok daha canlı ve parlak) */
+.project-difficulty .filled {
+    color: var(--accent); /* --main-color yerine --accent kullanıyoruz */
+}
+
+/* --- KART SEVİYELERİNE GÖRE ÇOK HAFİF RENK DEĞİŞİMLERİ --- */
+
+/* Tüm kartların alt çizgisini hazırlayalım, transition ile yumuşak geçiş verelim */
+.project-card {
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent; /* Varsayılan olarak şeffaf */
+}
+
+/* 3 Yıldız - İleri Seviye (Hafif Mor Vurgu) */
+.project-card.level-3 {
+    background: linear-gradient(145deg, var(--card-bg) 60%, rgba(138, 43, 226, 0.05));
+    border-bottom: 2px solid rgba(138, 43, 226, 0.3);
+}
+.project-card.level-3:hover {
+    border-bottom-color: rgba(138, 43, 226, 0.8);
+    box-shadow: 0 10px 20px rgba(138, 43, 226, 0.1);
+}
+
+/* 2 Yıldız - Orta Seviye (Hafif Turuncu Vurgu) */
+.project-card.level-2 {
+    background: linear-gradient(145deg, var(--card-bg) 60%, rgba(255, 159, 67, 0.05));
+    border-bottom: 2px solid rgba(255, 159, 67, 0.3);
+}
+
+.project-card.level-2:hover {
+    border-bottom-color: rgba(255, 159, 67, 0.8);
+    box-shadow: 0 10px 20px rgba(255, 159, 67, 0.1);
+}
+
+
+
+/* 1 Yıldız - Temel Seviye (Hafif Zümrüt Yeşili Vurgu) */
+.project-card.level-1 {
+    background: linear-gradient(145deg, var(--card-bg) 60%, rgba(0, 255, 136, 0.05));
+    border-bottom: 2px solid rgba(0, 255, 136, 0.3);
+}
+.project-card.level-1:hover {
+    border-bottom-color: rgba(0, 255, 136, 0.8);
+    box-shadow: 0 10px 20px rgba(0, 255, 136, 0.1);
+}
+/* Karta üzerine gelince yıldızların hafif büyümesi (İsteğe bağlı) */
+.project-card:hover .project-difficulty {
+    transform: scale(1.1);
+}
+/* 3 Yıldız - İleri Seviye (Mor Şerit) */
+.project-card.level-3::before {
+    background: rgba(138, 43, 226, 0.9) !important; 
+}
+
+/* 2 Yıldız - Orta Seviye (Turuncu Şerit) */
+.project-card.level-2::before {
+    background: rgba(255, 159, 67, 0.9) !important; 
+}
+
+/* 1 Yıldız - Temel Seviye (Zümrüt Yeşili Şerit) */
+.project-card.level-1::before {
+    background: rgba(0, 255, 136, 0.9) !important; 
+}
+/* 3 Yıldız - İleri Seviye (Mor Yıldızlar) */
+.project-card.level-3 .project-difficulty .filled {
+    color: #8a2be2; 
+    text-shadow: 0 0 8px #8a2be2, 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 2 Yıldız - Orta Seviye (Turuncu Yıldızlar) */
+.project-card.level-2 .project-difficulty .filled {
+    color: #ff9f43;
+    text-shadow: 0 0 8px #ff9f43, 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* 1 Yıldız - Temel Seviye (Zümrüt Yeşili Yıldızlar) */
+.project-card.level-1 .project-difficulty .filled {
+    color: #00ff88;
+    text-shadow: 0 0 8px #00ff88, 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* --- Dinamik Arka Plan Efekti (Kayan Ambient Işıklar) --- */
+
+body {
+    position: relative; /* Işıkların gövdeye göre konumlanması için */
+    overflow-x: hidden;
+}
+
+body::before, body::after {
+    content: '';
+    position: fixed; /* Kaydırma (scroll) yapıldığında ışıklar ekranda sabit kalsın */
+    width: 60vw;
+    height: 60vw;
+    max-width: 800px;
+    max-height: 800px;
+    border-radius: 50%;
+    filter: blur(140px); /* Keskin yuvarlakları dağıtarak dumanlı bir ışık hüzmesine çevirir */
+    z-index: -1; /* Kartların ve yazıların arkasında kalması için en alt katmana atıyoruz */
+    pointer-events: none; /* Mouse ile tıklanmasını veya metin seçimini engeller */
+    animation: floatLights 20s infinite alternate ease-in-out;
+}
+
+/* Sol üstten vuran Neon Mavi Işık */
+body::before {
+    background: rgba(0, 212, 255, 0.08); /* Temanızın ana vurgu rengi */
+    top: -20%;
+    left: -10%;
+}
+
+/* Sağ alttan vuran Siber Mor Işık */
+body::after {
+    background: rgba(138, 43, 226, 0.08); /* İleri seviye projelerinizdeki mor ton */
+    bottom: -20%;
+    right: -10%;
+    animation-duration: 25s; /* Mavi ışıktan farklı bir hızda hareket etsin */
+    animation-direction: alternate-reverse; /* Ters yönde hareket etsin */
+}
+
+/* Işıkların Yavaşça Süzülme Animasyonu */
+@keyframes floatLights {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        transform: translate(8vw, 12vh) scale(1.15); /* Hafifçe büyüyüp sağ aşağı kaysın */
+    }
+    100% {
+        transform: translate(-5vw, -8vh) scale(0.9); /* Küçülüp sol yukarı kaysın */
+    }
+}
+/* --- CV İndirme Butonu --- */
+.cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    padding: 0.8rem 2.2rem;
+    background: rgba(0, 212, 255, 0.05);
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    border-radius: 50px; /* Tam yuvarlak kenarlar */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+}
+
+.cv-btn i {
+    font-size: 1.1rem;
+}
+
+.cv-btn:hover {
+    background: var(--accent);
+    color: var(--bg-color); /* Yazı rengini siyah/koyu yapar */
+    box-shadow: 0 0 25px var(--accent-glow);
+    transform: translateY(-3px); /* Üzerine gelince hafifçe yukarı kalkar */
+}
+/* --- AI Chat Gecikme Bilgilendirmesi --- */
+.chat-hint {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4); /* Göz yormayan soluk bir renk */
+    margin-top: -5px;
+    margin-bottom: 10px;
+    font-style: italic;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

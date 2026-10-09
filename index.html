@@ -47,7 +47,7 @@
         <span class="pulse-dot"></span>
         <span data-key="live-text">Şu anda</span>
         <span class="project-name" data-key="current-work"
-          >Makine Öğrenmesi</span
+          >Mobil Uygulama Geliştirme</span
         >
         <span data-key="working-on">üzerinde çalışıyorum</span>
       </div>
@@ -55,6 +55,12 @@
       <p data-key="hero-desc">
         Bilgisayar Mühendisliği Öğrencisi & Yazılım Geliştirici
       </p>
+
+      <!-- CV İndirme Butonu -->
+      <a href="BeratResulogluCV.pdf" download class="cv-btn">
+        <i class="fas fa-file-download"></i>
+        <span data-key="btn-cv">CV İndir</span>
+      </a>
     </header>
 
     <main>
@@ -80,7 +86,7 @@
         <h2 class="section-title" data-key="nav-education">Eğitim</h2>
         <div class="project-card" style="max-width: 600px; margin: 0 auto">
           <h3 data-key="edu-uni">Sakarya Üniversitesi</h3>
-          <p data-key="edu-dept">Bilgisayar Mühendisliği (3. Sınıf)</p>
+          <p data-key="edu-dept">Bilgisayar Mühendisliği (4. Sınıf)</p>
           <div class="tech-stack">
             <span class="tech-tag" data-key="edu-license">Lisans</span>
             <span class="tech-tag" data-key="edu-eng">Mühendislik</span>
@@ -88,68 +94,390 @@
         </div>
       </section>
 
-      <section id="skills" style="padding: 4rem 10%; text-align: center">
-        <h2 class="section-title" data-key="skills-title">
+      <section id="skills" style="padding: 4rem 10%">
+        <h2
+          class="section-title"
+          data-key="skills-title"
+          style="text-align: center"
+        >
           Teknoloji Yığını & Beceriler
         </h2>
 
+        <!-- Sütunları kapsayan ana Grid yapısı -->
         <div
-          class="skills-container"
           style="
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 900px;
-            margin: 0 auto;
-            margin-bottom: 2rem;
-          "
-        >
-          <span class="tech-tag">AI-Native Development</span>
-          <span class="tech-tag">Prompt Engineering</span>
-          <span class="tech-tag" data-key="skill-debug">Hata Ayıklama</span>
-          <span class="tech-tag" data-key="skill-team">Ekip Çalışması</span>
-        </div>
-
-        <div
-          class="skills-container"
-          style="
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            max-width: 900px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
           "
         >
-          <span class="tech-tag">C# / ASP.NET Core</span>
-          <span class="tech-tag">C / C++</span>
-          <span class="tech-tag">Java</span>
-          <span class="tech-tag">Flutter & Dart</span>
-          <span class="tech-tag">OOP</span>
-
-          <span class="tech-tag">NodeMCU / ESP8266</span>
-          <span class="tech-tag" data-key="skill-sensor"
-            >Sensör Entegrasyonu</span
+          <!-- Kategori 1: Yapay Zeka & Mimari -->
+          <div
+            style="
+              background: var(--card-bg);
+              padding: 2rem;
+              border-radius: 15px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              text-align: center;
+              transition: var(--transition);
+            "
           >
-          <span class="tech-tag" data-key="skill-imgproc">Görüntü İşleme</span>
-          <span class="tech-tag" data-key="skill-ml">Makine Öğrenmesi</span>
-          <span class="tech-tag" data-key="skill-embedded"
-            >Gömülü Sistemler</span
-          >
+            <h3
+              style="
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              "
+            >
+              Yapay Zeka & Mimari
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem">
+              <span class="tech-tag">AI-Native Development</span>
+              <span class="tech-tag">Prompt Engineering</span>
+              <span class="tech-tag">Google Gemini API</span>
+              <span class="tech-tag">Groq LPU API</span>
+              <span class="tech-tag">Google ML Kit (OCR)</span>
+              <span class="tech-tag">Clean Architecture</span>
+              <span class="tech-tag">MVVM Architecture</span>
+              <span class="tech-tag">Offline-First</span>
+            </div>
+          </div>
 
-          <span class="tech-tag">MS SQL Server</span>
-          <span class="tech-tag">PostgreSQl</span>
-          <span class="tech-tag">Entity Framework</span>
-          <span class="tech-tag">Git / GitHub</span>
-          <span class="tech-tag">Postman</span>
+          <!-- Kategori 2: Backend & Web -->
+          <div
+            style="
+              background: var(--card-bg);
+              padding: 2rem;
+              border-radius: 15px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              text-align: center;
+              transition: var(--transition);
+            "
+          >
+            <h3
+              style="
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              "
+            >
+              Backend & Web
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem">
+              <span class="tech-tag">C# / .NET 8</span>
+              <span class="tech-tag">ASP.NET Core</span>
+              <span class="tech-tag">C / C++</span>
+              <span class="tech-tag">Java</span>
+              <span class="tech-tag">JavaScript & CSS3</span>
+              <span class="tech-tag">REST API & JWT</span>
+              <span class="tech-tag">SignalR & WebSockets</span>
+              <span class="tech-tag">Blazor</span>
+            </div>
+          </div>
+
+          <!-- Kategori 3: Mobil & Veritabanı -->
+          <div
+            style="
+              background: var(--card-bg);
+              padding: 2rem;
+              border-radius: 15px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              text-align: center;
+              transition: var(--transition);
+            "
+          >
+            <h3
+              style="
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              "
+            >
+              Mobil & Veritabanı
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem">
+              <span class="tech-tag">Flutter & Dart</span>
+              <span class="tech-tag">Kotlin</span>
+              <span class="tech-tag">Riverpod & Provider</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">MS SQL Server</span>
+              <span class="tech-tag">SQLite (Drift)</span>
+              <span class="tech-tag">Firebase</span>
+              <span class="tech-tag">Entity Framework Core</span>
+            </div>
+          </div>
+
+          <!-- Kategori 4: IoT & Araçlar -->
+          <div
+            style="
+              background: var(--card-bg);
+              padding: 2rem;
+              border-radius: 15px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              text-align: center;
+              transition: var(--transition);
+            "
+          >
+            <h3
+              style="
+                color: var(--accent);
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+              "
+            >
+              IoT & Araçlar
+            </h3>
+            <div style="display: flex; flex-direction: column; gap: 0.8rem">
+              <span class="tech-tag">NodeMCU / ESP8266</span>
+              <span class="tech-tag">Arduino</span>
+              <span class="tech-tag">IoT Sistemleri</span>
+              <span class="tech-tag">Mesh Networking</span>
+              <span class="tech-tag" data-key="skill-sensor"
+                >Sensör Entegrasyonu</span
+              >
+              <span class="tech-tag" data-key="skill-imgproc"
+                >Görüntü İşleme</span
+              >
+              <span class="tech-tag">Git / GitHub</span>
+              <span class="tech-tag">Postman</span>
+            </div>
+          </div>
         </div>
       </section>
-
       <section id="projects">
         <h2 class="section-title" data-key="nav-projects">Projeler</h2>
         <div class="project-grid">
-          <div class="project-card">
+          <!-- Anka (3 Yıldız) -->
+          <div
+            class="project-card level-3"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 3/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+            </div>
+            <h3>Anka: Afet Sonrası Yaşam Sinyali Tespit Sistemi</h3>
+            <p data-key="proj-anka-desc">
+              Deprem sonrası enkaz altında kalan afetzedelerin konumunu, ek
+              donanım olmadan yalnızca akıllı telefonlarla tespit etmeyi
+              amaçlayan Android tabanlı sistem.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">D2D Communication</span>
+              <span class="tech-tag">Mesh Networking</span>
+              <span class="tech-tag">Indoor Positioning</span>
+              <span class="tech-tag">Kotlin</span>
+            </div>
+          </div>
+          <!-- Derman: Afet Sonrası Yardım (3 Yıldız) -->
+          <div
+            class="project-card level-3"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 3/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+            </div>
+            <h3>Derman: Afet Sonrası Yardım Eşleştirme Platformu</h3>
+            <p data-key="proj-derman-desc">
+              Afet bölgesindeki ihtiyaç sahiplerini yardım edebilecek kişilerle
+              konum bazlı eşleştiren, yapay zeka destekli web platformu.
+              Afetzede ve Yardımcı için ayrı paneller sunar; talepler Gemini API
+              ile otomatik aciliyet skoru alır, yardımcılar bölgesel öncelik
+              önerisi görür. Güvenlik odaklı tasarımı sayesinde tam konum
+              yalnızca karşılıklı onaydan sonra paylaşılır, eşleşme sonrası
+              gerçek zamanlı mesajlaşma açılır, şikayet sistemi kötüye kullanımı
+              sınırlar.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">ASP.NET Core Web API</span>
+              <span class="tech-tag">Blazor Server</span>
+              <span class="tech-tag">PostgreSQL</span>
+              <span class="tech-tag">Entity Framework Core</span>
+              <span class="tech-tag">SignalR</span>
+              <span class="tech-tag">JWT Authentication</span>
+              <span class="tech-tag">Leaflet.js</span>
+              <span class="tech-tag">Gemini API</span>
+              <span class="tech-tag">Prompt Engineering</span>
+            </div>
+          </div>
+          <!-- Fino: Finansal Ajandam (3 Yıldız) -->
+          <div
+            class="project-card level-3"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 3/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+            </div>
+            <h3>Fino: Finansal Ajandam</h3>
+            <p data-key="proj-fino-desc">
+              Kişisel bütçe yönetimini otomatikleştiren, gizlilik odaklı
+              (offline-first) bir mobil finansal ajanda. Fiş ve faturalardan
+              veri girişini Google ML Kit tabanlı on-device OCR ile saniyelere
+              indirir; harcama alışkanlıklarını cihaz içi SQLite (Drift)
+              üzerinde yerel olarak saklar. Entegre Google Gemini AI finans koçu
+              sayesinde harcama dağılımlarını analiz ederek kişiselleştirilmiş
+              tasarruf içgörüleri üretir ve aylık görsel PDF raporları sunar.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Flutter</span>
+              <span class="tech-tag">Dart</span>
+              <span class="tech-tag">Riverpod</span>
+              <span class="tech-tag">Drift (SQLite)</span>
+              <span class="tech-tag">Clean Architecture</span>
+              <span class="tech-tag">Google Gemini API</span>
+              <span class="tech-tag">Google ML Kit (OCR)</span>
+              <span class="tech-tag">Offline-First</span>
+            </div>
+          </div>
+
+          <!-- Taşınabilir Üretim (2 Yıldız) -->
+          <div
+            class="project-card level-2"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 2/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Taşınabilir Üretim ve Stok Takip Sistemi</h3>
+            <p data-key="proj-stock-desc">
+              Bir imalathanenin üretim ve stok süreçlerini dijitalleştirmek
+              amacıyla geliştirilmiş, hiçbir kuruluma ihtiyaç duymadan
+              (Portable/Self-Contained) doğrudan tek bir .exe üzerinden çalışan,
+              SQLite tabanlı masaüstü ERP yazılımı.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">.Net 8</span>
+              <span class="tech-tag">Windows Forms</span>
+              <span class="tech-tag">C#</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Entity Framework Core</span>
+              <span class="tech-tag">ERP</span>
+              <span class="tech-tag">Stok Takip Yönetimi</span>
+            </div>
+          </div>
+          <!-- Anlatmaca (2 Yıldız) -->
+          <a
+            href="anlatmaca.html"
+            class="project-link-wrapper"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div
+              class="project-card hover-effect level-2"
+              style="width: 100%; max-width: 100%; box-sizing: border-box"
+            >
+              <div class="project-difficulty" title="Karmaşıklık Seviyesi: 2/3">
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star filled"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <h3>Anlatmaca: Kelime Oyunu</h3>
+              <p data-key="proj-anlatmaca-desc">
+                Flutter ve MVVM mimarisiyle geliştirilmiş; Provider durum
+                yönetimi, asenkron yerel veri işleme, ses efektleri ve dinamik
+                skor takip mekanizması barındıran modern bir mobil kelime oyunu.
+              </p>
+              <div class="tech-stack">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+                <span class="tech-tag">JSON Parsing</span>
+                <span class="tech-tag">Provider (State Management)</span>
+                <span class="tech-tag">MVVM Architecture</span>
+              </div>
+              <div
+                style="
+                  margin-top: 1rem;
+                  color: var(--main-color);
+                  font-size: 0.9rem;
+                  font-weight: bold;
+                "
+              >
+                Detayları İncele <i class="fas fa-arrow-right"></i>
+              </div>
+            </div>
+          </a>
+
+          <!-- Tiger Fitness Center (2 Yıldız) -->
+          <div
+            class="project-card level-2"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 2/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Tiger Fitness Center</h3>
+            <p data-key="proj-tiger-desc">
+              ASP.NET Core MVC mimarisiyle geliştirilmiş, rol tabanlı
+              yetkilendirme (Admin, Trainer, Member) ve yapay zeka destekli
+              antrenman koçluğu barındıran kapsamlı spor salonu yönetim sistemi.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">ASP.NET Core MVC</span>
+              <span class="tech-tag">Entity Framework Core</span>
+              <span class="tech-tag">MS SQL Server</span>
+              <span class="tech-tag">Groq Cloud API</span>
+              <span class="tech-tag">REST API</span>
+            </div>
+          </div>
+
+          <!-- Secure Exit IoT (2 Yıldız) -->
+          <div
+            class="project-card level-2"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 2/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+            </div>
+            <h3>Secure Exit IoT</h3>
+            <p data-key="proj-iot-desc">
+              Secure Exit, alev ve titreşim sensörleri aracılığıyla yangın veya
+              deprem riskini otonom olarak algılayan, tehlike anında acil çıkış
+              kapılarını ve yönlendirme aydınlatmalarını otomatik devreye sokan
+              bir IoT projesidir. Veriler NodeMCU üzerinde işlenerek Firebase
+              ile senkronize edilir; kullanıcılar mobil uygulama üzerinden canlı
+              verileri izleyebilir ve sisteme manuel müdahalede bulunabilir.
+            </p>
+            <div class="tech-stack">
+              <span class="tech-tag">Internet of Things (IoT)</span>
+              <span class="tech-tag">NodeMCU (ESP8266)</span>
+              <span class="tech-tag">Embedded C++ / Arduino</span>
+              <span class="tech-tag">Firebase Realtime Database</span>
+              <span class="tech-tag">Mobile App Development</span>
+              <span class="tech-tag">Sensors (Flame & Vibration)</span>
+              <span class="tech-tag">Emergency Systems</span>
+            </div>
+          </div>
+
+          <!-- AI Destekli Kişisel Web Site (2 Yıldız) -->
+          <div
+            class="project-card level-2"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 2/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+            </div>
             <h3 data-key="proj-web-title">AI Destekli Kişisel Web Site</h3>
             <p data-key="proj-web-desc">
               Modern web teknolojileriyle geliştirilen, Groq AI entegrasyonuna
@@ -166,87 +494,43 @@
             </div>
           </div>
 
-          <a href="anlatmaca.html" class="project-link-wrapper">
-            <div class="project-card hover-effect">
-              <h3>Anlatmaca: Kelime Oyunu</h3>
-              <p data-key="proj-anlatmaca-desc">
-                Flutter ile geliştirilen, arkadaşlarınızla oynayabileceğiniz
-                eğlenceli ve interaktif mobil kelime oyunu.
-              </p>
-              <div class="tech-stack">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Dart</span>
-                <span class="tech-tag">JSON Parsing</span>
-                <span class="tech-tag">State Management</span>
-              </div>
-              <div
-                style="
-                  margin-top: 1rem;
-                  color: var(--main-color);
-                  font-size: 0.9rem;
-                  font-weight: bold;
-                "
-              >
-                Detayları İncele <i class="fas fa-arrow-right"></i>
-              </div>
+          <!-- Sanal Kütüphanem (1 Yıldız) -->
+          <div
+            class="project-card level-1"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 1/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-          </a>
-
-          <div class="project-card">
-            <h3>Stok Takip Programı</h3>
-            <p data-key="proj-anka-desc">
-              Üretilen makine parçalarının stok takibini ve yönetimini
-              kolaylaştırmak için geliştirilmiş masaüstü uygulaması.
-            </p>
-            <div class="tech-stack">
-              <span class="tech-tag">ASP.Net</span>
-              <span class="tech-tag">Inventory Tracking</span>
-              <span class="tech-tag">C#</span>
-              <span class="tech-tag">SQLite</span>
-            </div>
-          </div>
-
-          <div class="project-card">
             <h3>Sanal Kütüphanem</h3>
-            <p data-key="proj-anka-desc">
-              Kullanıcıların daha önce okuduğu kitapları ve okumak istediklerini
-              kaydedebildikleri api destekli bir mobil uygulama.
+            <p data-key="proj-library-desc">
+              Kullanıcıların okuma alışkanlıklarını düzenleyebilecekleri, Open
+              Library REST API entegrasyonu ile anlık kitap araması yapabilen ve
+              SQLite ile yerel veri kalıcılığı (offline-first) sağlayan çapraz
+              platform kütüphane takip uygulaması.
             </p>
             <div class="tech-stack">
               <span class="tech-tag">Flutter</span>
               <span class="tech-tag">Dart</span>
+              <span class="tech-tag">SQLite</span>
+              <span class="tech-tag">Open Library REST API</span>
+              <span class="tech-tag">CRUD Architecture</span>
+              <span class="tech-tag">Offline-First</span>
             </div>
           </div>
 
-          <div class="project-card">
-            <h3>Anka</h3>
-            <p data-key="proj-anka-desc">
-              Deprem sonrası enkaz altındaki afetzedelerin konumunu tespit
-              edebilmek için akıllı telefonları D2D prensibiyle kullanmayı
-              amaçlayan yazılım sistemi.
-            </p>
-            <div class="tech-stack">
-              <span class="tech-tag">D2D Communication</span>
-              <span class="tech-tag">Mesh Networking</span>
-              <span class="tech-tag">Indoor Positioning</span>
-              <span class="tech-tag">Flutter</span>
+          <!-- BAY Turizm (1 Yıldız) -->
+          <div
+            class="project-card level-1"
+            style="width: 100%; max-width: 100%; box-sizing: border-box"
+          >
+            <div class="project-difficulty" title="Karmaşıklık Seviyesi: 1/3">
+              <i class="fas fa-star filled"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
-          </div>
-
-          <div class="project-card">
-            <h3>Secure Exit IoT</h3>
-            <p data-key="proj-iot-desc">
-              NodeMCU ve çeşitli sensörler kullanılarak geliştirilen akıllı acil
-              çıkış yönlendirme sistemi.
-            </p>
-            <div class="tech-stack">
-              <span class="tech-tag">IoT</span>
-              <span class="tech-tag">NodeMCU</span>
-              <span class="tech-tag">Embedded</span>
-            </div>
-          </div>
-
-          <div class="project-card">
             <h3>BAY Turizm</h3>
             <p data-key="proj-bay-desc">
               PostgreSQL veritabanı kullanılarak geliştirilen, bir otobüs
@@ -257,22 +541,6 @@
               <span class="tech-tag">C# .NET</span>
               <span class="tech-tag">Object-Oriented Programming (OOP)</span>
               <span class="tech-tag">Relational Database Design</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>Tiger Fitness Center</h3>
-            <p data-key="proj-tiger-desc">
-              ASP.NET Core MVC mimarisiyle geliştirilmiş, rol tabanlı
-              yetkilendirme (Admin, Trainer, Member) ve yapay zeka destekli
-              antrenman koçluğu barındıran kapsamlı spor salonu yönetim sistemi.
-            </p>
-            <div class="tech-stack">
-              <span class="tech-tag">ASP.NET Core MVC</span>
-              <span class="tech-tag">Entity Framework Core</span>
-              <span class="tech-tag">MS SQL Server</span>
-              <span class="tech-tag">Groq Cloud API</span>
-              <span class="tech-tag">REST API</span>
             </div>
           </div>
         </div>
@@ -395,6 +663,11 @@
               <div class="ai-msg" data-key="chat-welcome">
                 Merhaba! Berat hakkında ne merak ediyorsun?
               </div>
+              <!-- Gecikme Bilgilendirme Mesajı -->
+              <div class="chat-hint" data-key="chat-delay">
+                * Sunucu uyku modunda olabileceği için ilk yanıtın gelmesi
+                birkaç saniye sürebilir, lütfen bekleyin.
+              </div>
             </div>
 
             <div id="chat-input-area">
@@ -477,13 +750,13 @@
         "Bilgisayar Mühendisliği Öğrencisi & AI Native Yazılım Geliştirici",
       "live-text": "Şu anda",
       "working-on": "üzerinde çalışıyor",
-      "current-work": "Görüntü işleme",
+      "current-work": "Mobil Uygulama Geliştirme",
 
       "about-text":
         "Yazılım geliştirme, IoT ve yapay zeka konularına meraklı bir bilgisayar mühendisliği öğrencisiyim. Geliştirdiğim projelerde verimlilik ve kullanıcı deneyimini ön planda tutarak, karmaşık sorunlara teknolojik çözümler üretmeyi hedefliyorum. Sayfamı inceleyerek projelerim ve yetkinliklerim hakkında daha fazla bilgi edinebilirsiniz.",
 
       "edu-uni": "Sakarya Üniversitesi",
-      "edu-dept": "Bilgisayar Mühendisliği (3. Sınıf)",
+      "edu-dept": "Bilgisayar Mühendisliği (4. Sınıf)",
       "edu-license": "Lisans",
       "edu-eng": "Mühendislik",
 
@@ -498,16 +771,24 @@
       "proj-web-title": "AI Destekli Kişisel Web Site",
       "proj-web-desc":
         "Modern web teknolojileriyle geliştirilen, Groq AI entegrasyonuna sahip dinamik portfolyo sitesi. Ziyaretçilerin projelerim ve yetkinliklerim hakkında gerçek zamanlı bilgi alabileceği, yüksek performanslı bir dijital asistan içerir.",
-      "proj-anlatmaca-desc":
-        "Flutter ile geliştirilen, eğlenceli ve interaktif bir mobil kelime oyunu.",
       "proj-anka-desc":
-        "Deprem sonrası enkaz altındaki afetzedelerin konumunu tespit edebilmek için akıllı telefonları D2D prensibiyle kullanmayı amaçlayan yazılım sistemi.",
-      "proj-iot-desc":
-        "NodeMCU ve çeşitli sensörler kullanılarak geliştirilen akıllı acil çıkış yönlendirme sistemi.",
-      "proj-bay-desc":
-        "PostgreSQL veritabanı kullanılarak geliştirilen, bir otobüs firmasının kapsamlı sefer ve yolcu yönetim sistemi.",
+        "Deprem sonrası enkaz altında kalan afetzedelerin konumunu, ek donanım olmadan yalnızca akıllı telefonlarla tespit etmeyi amaçlayan Android tabanlı sistem.",
+      "proj-derman-desc":
+        "Afet bölgesindeki ihtiyaç sahiplerini yardım edebilecek kişilerle konum bazlı eşleştiren, yapay zeka destekli web platformu. Afetzede ve Yardımcı için ayrı paneller sunar; talepler Gemini API ile otomatik aciliyet skoru alır, yardımcılar bölgesel öncelik önerisi görür. Güvenlik odaklı tasarımı sayesinde tam konum yalnızca karşılıklı onaydan sonra paylaşılır, eşleşme sonrası gerçek zamanlı mesajlaşma açılır, şikayet sistemi kötüye kullanımı sınırlar.",
+      "proj-fino-desc":
+        "Kişisel bütçe yönetimini otomatikleştiren, gizlilik odaklı (offline-first) bir mobil finansal ajanda. Fiş ve faturalardan veri girişini Google ML Kit tabanlı on-device OCR ile saniyelere indirir; harcama alışkanlıklarını cihaz içi SQLite (Drift) üzerinde yerel olarak saklar. Entegre Google Gemini AI finans koçu sayesinde harcama dağılımlarını analiz ederek kişiselleştirilmiş tasarruf içgörüleri üretir ve aylık görsel PDF raporları sunar.",
+      "proj-stock-desc":
+        "Bir imalathanenin üretim ve stok süreçlerini dijitalleştirmek amacıyla geliştirilmiş, hiçbir kuruluma ihtiyaç duymadan (Portable/Self-Contained) doğrudan tek bir .exe üzerinden çalışan, SQLite tabanlı masaüstü ERP yazılımı.",
+      "proj-anlatmaca-desc":
+        "Flutter ve MVVM mimarisiyle geliştirilmiş; Provider durum yönetimi, asenkron yerel veri işleme, ses efektleri ve dinamik skor takip mekanizması barındıran modern bir mobil kelime oyunu.",
       "proj-tiger-desc":
         "ASP.NET Core MVC mimarisiyle geliştirilmiş, rol tabanlı yetkilendirme (Admin, Trainer, Member) ve yapay zeka destekli antrenman koçluğu barındıran kapsamlı spor salonu yönetim sistemi.",
+      "proj-iot-desc":
+        "Secure Exit, alev ve titreşim sensörleri aracılığıyla yangın veya deprem riskini otonom olarak algılayan, tehlike anında acil çıkış kapılarını ve yönlendirme aydınlatmalarını otomatik devreye sokan bir IoT projesidir. Veriler NodeMCU üzerinde işlenerek Firebase ile senkronize edilir; kullanıcılar mobil uygulama üzerinden canlı verileri izleyebilir ve sisteme manuel müdahalede bulunabilir.",
+      "proj-library-desc":
+        "Kullanıcıların okuma alışkanlıklarını düzenleyebilecekleri, Open Library REST API entegrasyonu ile anlık kitap araması yapabilen ve SQLite ile yerel veri kalıcılığı (offline-first) sağlayan çapraz platform kütüphane takip uygulaması.",
+      "proj-bay-desc":
+        "PostgreSQL veritabanı kullanılarak geliştirilen, bir otobüs firmasının kapsamlı sefer ve yolcu yönetim sistemi.",
 
       "contact-desc":
         "Bir projeniz mi var? Benimle iletişime geçmekten çekinmeyin.",
@@ -515,11 +796,14 @@
       "ph-email": "E-posta Adresiniz",
       "ph-msg": "Mesajınız",
       "btn-send": "Gönder",
+      "btn-cv": "CV İndir",
       "social-text": "Bana buralardan da ulaşabilirsiniz:",
 
       "chat-header": "AI Asistan",
       "chat-welcome": "Merhaba! Berat hakkında ne merak ediyorsun?",
       "chat-ph": "Bir soru sor...",
+      "chat-delay":
+        "* Sunucu uyku modunda olabileceği için ilk yanıtın gelmesi birkaç saniye sürebilir, lütfen bekleyin.",
       "footer-rights": "Tüm Hakları Saklıdır.",
     },
     en: {
@@ -534,13 +818,13 @@
         "Computer Engineering Student & AI Native Software Developer",
       "live-text": "Currently working on:",
       "working-on": "project",
-      "current-work": "Image Processing",
+      "current-work": "Mobile App Development",
 
       "about-text":
         "I am a computer engineering student interested in software development, IoT, and artificial intelligence. I aim to create technological solutions to complex problems by prioritizing efficiency and user experience in my projects. You can check my page to learn more about my projects and skills.",
 
       "edu-uni": "Sakarya University",
-      "edu-dept": "Computer Engineering (3rd Year)",
+      "edu-dept": "Computer Engineering (4th Year)",
       "edu-license": "Bachelor's",
       "edu-eng": "Engineering",
 
@@ -555,27 +839,38 @@
       "proj-web-title": "AI Powered Personal Website",
       "proj-web-desc":
         "A dynamic portfolio site developed with modern web technologies, featuring Groq AI integration. It includes a high-performance digital assistant where visitors can get real-time information about my projects and skills.",
-      "proj-anlatmaca-desc":
-        "A fun and interactive mobile word game developed with Flutter.",
       "proj-anka-desc":
-        "A software system aiming to use smartphones with D2D principles to detect the location of disaster victims under debris after an earthquake.",
-      "proj-iot-desc":
-        "Smart emergency exit guidance system developed using NodeMCU and various sensors.",
-      "proj-bay-desc":
-        "A comprehensive voyage and passenger management system for a bus company developed using PostgreSQL database.",
+        "An Android-based system aiming to detect the location of disaster victims under debris after an earthquake using only smartphones without additional hardware.",
+      "proj-derman-desc":
+        "An AI-supported web platform that matches people in need in disaster areas with those who can help based on location. It offers separate panels for Victims and Helpers; requests receive an automatic urgency score via the Gemini API, and helpers see regional priority suggestions. Its security-focused design ensures exact locations are shared only after mutual approval, real-time messaging opens after matching, and a reporting system limits abuse.",
+      "proj-fino-desc":
+        "A privacy-focused (offline-first) mobile financial agenda that automates personal budget management. It reduces data entry from receipts and invoices to seconds with Google ML Kit-based on-device OCR and stores spending habits locally on on-device SQLite (Drift). Thanks to the integrated Google Gemini AI financial coach, it analyzes spending distributions to generate personalized savings insights and provides monthly visual PDF reports.",
+      "proj-stock-desc":
+        "A desktop ERP software based on SQLite, developed to digitize the production and inventory processes of a workshop, running directly over a single .exe without needing any installation (Portable/Self-Contained).",
+      "proj-anlatmaca-desc":
+        "A modern mobile word game developed with Flutter and MVVM architecture; featuring Provider state management, asynchronous local data processing, sound effects, and a dynamic score tracking mechanism.",
       "proj-tiger-desc":
         "A comprehensive gym management system developed with ASP.NET Core MVC architecture, featuring role-based authorization (Admin, Trainer, Member) and AI-supported workout coaching.",
+      "proj-iot-desc":
+        "Secure Exit is an IoT project that autonomously detects fire or earthquake risks via flame and vibration sensors, automatically activating emergency exit doors and guidance lights in case of danger. Data is processed on NodeMCU and synchronized with Firebase; users can monitor live data via a mobile app and manually intervene in the system.",
+      "proj-library-desc":
+        "A cross-platform library tracking application where users can organize their reading habits, perform instant book searches with Open Library REST API integration, and ensure local data persistence (offline-first) with SQLite.",
+      "proj-bay-desc":
+        "A comprehensive voyage and passenger management system for a bus company developed using a PostgreSQL database.",
 
       "contact-desc": "Got a project? Don't hesitate to contact me.",
       "ph-name": "Your Name",
       "ph-email": "Your Email Address",
       "ph-msg": "Your Message",
       "btn-send": "Send",
+      "btn-cv": "Download CV",
       "social-text": "You can also reach me here:",
 
       "chat-header": "AI Assistant",
       "chat-welcome": "Hello! What would you like to know about Berat?",
       "chat-ph": "Ask a question...",
+      "chat-delay":
+        "* The first response may be delayed a few seconds due to server wake-up time, please wait.",
       "footer-rights": "All Rights Reserved.",
     },
   };
